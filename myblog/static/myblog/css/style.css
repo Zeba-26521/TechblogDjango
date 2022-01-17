@@ -1,0 +1,39 @@
+.anm {
+    width: 150px;
+    height: 45px;
+    background: rgb(119,138,211);
+    position: relative;
+    animation: mymove 5s infinite;
+    border-radius: 15px;
+
+  }
+  
+  @keyframes mymove {
+    from {left: 0px;}
+    to {left: 230px;}
+  }
+
+
+
+
+.jumb-color{
+     background-color: rgb(233,229,223);
+
+}
+
+.jub-text{
+    color: rgb(106, 135, 236);
+    font-size: 29px;
+}
+
+
+.dash-color{
+    background-color: rgb(233,229,223);
+    font-size: 28px;
+    color: rgb(106, 135, 236);
+
+}
+
+
+
+  

@@ -1,0 +1,52 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block msg %}
+    {% if messages %}
+        {% for m in messages %}
+        <div {% if m.tags %} class="alert alert-{{m.tags}} alert-dismissible fade show" {% endif %}> 
+           <strong>  {{m}} </strong>
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+
+           </button>
+        </div> 
+        {% endfor %}
+    {% endif %}
+{% endblock msg %}
+
+
+{% block side %}
+
+<div class="col-sm-2 my-3 text-center text-dark">
+<h4 class="jub-text">{{fullname}}</h4>
+
+{% for g in grp %}
+{{g.name}}
+{% endfor %}
+</div>
+{% endblock side %}
+{% block content %}
+<div class="col-sm-10">
+    <h3 class="my-5 alert dash-color">Dashboard / Edit Post  </h3> 
+  
+    {% if userid == pid  or perms.myblog.edit_Blogpost %}
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        <p>
+            {{form.label_tag}} {{form}} <small class="text-danger"> {{form.errors|striptags}} </small> 
+        </p>
+                
+        <input type="submit" class="btn btn-success" value="Update">
+        <a href="{% url 'Dashboard' %}" class="btn btn-warning">Cancel</a>
+
+    </form>
+    {% else %}
+    <h4 class="text-center alert alert-danger mt-3">Sorry!! This post does not belong to you, you are not authorised  to edit this Post</h4>
+    <a href="{% url 'Dashboard' %}" class="btn btn-warning">Go Back</a>
+
+    {% endif %}
+
+   
+</div>
+
+{% endblock content %}
